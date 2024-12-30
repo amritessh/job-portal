@@ -10,7 +10,8 @@ import MainLayout from './Layouts/MainLayout';
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path='/' element={<MainLayout />}>
-      <Route path='/about' element={<HomePage />} />
+      <Route index element={<HomePage />} />
+      <Route path='/jobs' element={<JobsPage />} />
     </Route>
   )
 );
