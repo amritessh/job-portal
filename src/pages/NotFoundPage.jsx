@@ -7,7 +7,7 @@ const NotFoundPage = () => {
       <section className='text-center flex flex-col justify-center items-center h-96'>
         {/* <i className='fas fa-exclamation-triangle text-yellow-400 f mb-4'></i> */}
         <FaExclamationTriangle className='text-yellow text-6xl mb-4'></FaExclamationTriangle>
-        <h1 className='text-6xl font-bold mb-4'>404 Not Found</h1>
+        <h1 className='text-6xl font-bold mb-4 color-yellow'>404 Not Found</h1>
         <p className='text-xl mb-5'>This page does not exist</p>
         <Link
           to='/'
