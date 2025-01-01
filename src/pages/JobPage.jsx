@@ -1,7 +1,7 @@
-import React from 'react';
+// import React from 'react';
 
 const JobPage = () => {
-  return <div></div>;
+  return <>Job ID Page</>;
 };
 
 export default JobPage;
