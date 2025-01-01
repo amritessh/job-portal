@@ -3,6 +3,11 @@ import logo from '../assets/images/logo.png';
 import { NavLink } from 'react-router-dom';
 
 const navbar = () => {
+  const linkClass = ({ isActive }) =>
+    isActive
+      ? 'text-black hover:bg-cyan-900 hover:text-white rounded-md px-3 py-2'
+      : 'text-white hover:bg-pink-900 hover:text-white rounded-md px-3 py-2';
+
   return (
     <nav className='bg-indigo-700 border-b border-indigo-500'>
       <div className='mx-auto max-w-7xl px-2 sm:px-6 lg:px-8'>
@@ -17,19 +22,13 @@ const navbar = () => {
             </NavLink>
             <div className='md:ml-auto'>
               <div className='flex space-x-2'>
-                <NavLink to='/' className={''}>
+                <NavLink to='/' className={linkClass}>
                   Home
                 </NavLink>
-                <NavLink
-                  to='/jobs'
-                  className='text-white hover:bg-gray-900 hover:text-white rounded-md px-3 py-2'
-                >
+                <NavLink to='/jobs' className={linkClass}>
                   Jobs
                 </NavLink>
-                <NavLink
-                  to='/add-job'
-                  className='text-white hover:bg-gray-900 hover:text-white rounded-md px-3 py-2'
-                >
+                <NavLink to='/add-job' className={linkClass}>
                   Add Job
                 </NavLink>
               </div>
