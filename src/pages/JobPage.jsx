@@ -3,6 +3,8 @@
 // import { useState, useEffect } from 'react';
 import { useParams, useLoaderData, Link } from 'react-router-dom';
 
+import { FaArrowLeft } from 'react-icons/fa';
+
 const JobPage = () => {
   const { id } = useParams();
   const job = useLoaderData();
@@ -32,7 +34,7 @@ const JobPage = () => {
             to='/jobs'
             className='text-indigo-500 hover:text-indigo-600 flex items-center'
           >
-            <i className='fas fa-arrow-left mr-2'></i> Back to Job Listings
+            <FaArrowLeft className='mr-2' /> Back to Job Listings
           </Link>
         </div>
       </section>
@@ -43,29 +45,22 @@ const JobPage = () => {
             <main>
               <div className='bg-white p-6 rounded-lg shadow-md text-center md:text-left'>
                 <div className='text-gray-500 mb-4'>Full-Time</div>
-                <h1 className='text-3xl font-bold mb-4'>
-                  Senior React Developer
-                </h1>
+                <h1 className='text-3xl font-bold mb-4'>{job.type}</h1>
                 <div className='text-gray-500 mb-4 flex align-middle justify-center md:justify-start'>
                   <i className='fa-solid fa-location-dot text-lg text-orange-700 mr-2'></i>
-                  <p className='text-orange-700'>Boston, MA</p>
+                  <p className='text-orange-700'>{job.location}</p>
                 </div>
               </div>
 
               <div className='bg-white p-6 rounded-lg shadow-md mt-6'>
                 <h3 className='text-indigo-800 text-lg font-bold mb-6'>
-                  Job Description
+                  {job.description}
                 </h3>
 
-                <p className='mb-4'>
-                  We are seeking Link talented Front-End Developer to join our
-                  team in Boston, MA. The ideal candidate will have strong
-                  skills in HTML, CSS, and JavaScript, with experience working
-                  with modern JavaScript frameworks such as React or Angular.
-                </p>
+                <p className='mb-4'>{job.description}</p>
 
                 <h3 className='text-indigo-800 text-lg font-bold mb-2'>
-                  Salary
+                  {job.salary}
                 </h3>
 
                 <p className='mb-4'>$70k - $80K / Year</p>
@@ -76,7 +71,7 @@ const JobPage = () => {
             <aside>
               {/* <!-- Company Info --> */}
               <div className='bg-white p-6 rounded-lg shadow-md'>
-                <h3 className='text-xl font-bold mb-6'>Company Info</h3>
+                <h3 className='text-xl font-bold mb-6'>{job.company}</h3>
 
                 <h2 className='text-2xl'>NewTek Solutions</h2>
 
