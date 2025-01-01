@@ -1,10 +1,11 @@
 // import React from 'react';
 
 // import { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useLoaderData } from 'react-router-dom';
 
 const JobPage = () => {
   const { id } = useParams();
+  const job = useLoaderData();
 
   //   const [job, setJob] = useState(null);
   //   const [loading, setLoading] = useState(true);
@@ -22,11 +23,11 @@ const JobPage = () => {
   //       }
   //     };
   //   });
-  return loading ? '' : <h1>{job.title}</h1>;
+  return <h1>{job.title}</h1>;
 };
 
 const jobLoader = async ({ params }) => {
-  const res = await fetch(`/api/jpbs/${params.id}`);
+  const res = await fetch(`/api/jobs/${params.id}`);
   const data = await res.json();
   return data;
 };
