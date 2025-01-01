@@ -1,23 +1,49 @@
-// import React from 'react';
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
-const AddJobPage = () => {
+const AddJobPage = ({ addJobSubmit }) => {
   const [title, setTitle] = useState('');
-  const [type, setType] = useState('');
+  const [type, setType] = useState('Full-Time');
   const [location, setLocation] = useState('');
   const [description, setDescription] = useState('');
+  const [salary, setSalary] = useState('Under $50K');
   const [companyName, setCompanyName] = useState('');
-  const [companyLocation, setCompanyLocation] = useState('');
-  const [salary, setSalary] = useState('');
   const [companyDescription, setCompanyDescription] = useState('');
   const [contactEmail, setContactEmail] = useState('');
   const [contactPhone, setContactPhone] = useState('');
+
+  const navigate = useNavigate();
+
+  const submitForm = (e) => {
+    e.preventDefault();
+
+    const newJob = {
+      title,
+      type,
+      location,
+      description,
+      salary,
+      company: {
+        name: companyName,
+        description: companyDescription,
+        contactEmail,
+        contactPhone
+      }
+    };
+
+    addJobSubmit(newJob);
+
+    toast.success('Job Added Successfully');
+
+    return navigate('/jobs');
+  };
 
   return (
     <section className='bg-indigo-50'>
       <div className='container m-auto max-w-2xl py-24'>
         <div className='bg-white px-6 py-8 mb-4 shadow-md rounded-md border m-4 md:m-0'>
-          <form>
+          <form onSubmit={submitForm}>
             <h2 className='text-3xl text-center font-semibold mb-6'>Add Job</h2>
 
             <div className='mb-4'>
@@ -170,7 +196,7 @@ const AddJobPage = () => {
                 id='contact_email'
                 name='contact_email'
                 className='border rounded w-full py-2 px-3'
-                placeholder='Email address htmlFor applicants'
+                placeholder='Email address for applicants'
                 required
                 value={contactEmail}
                 onChange={(e) => setContactEmail(e.target.value)}
@@ -188,7 +214,7 @@ const AddJobPage = () => {
                 id='contact_phone'
                 name='contact_phone'
                 className='border rounded w-full py-2 px-3'
-                placeholder='Optional phone htmlFor applicants'
+                placeholder='Optional phone for applicants'
                 value={contactPhone}
                 onChange={(e) => setContactPhone(e.target.value)}
               />
@@ -208,5 +234,4 @@ const AddJobPage = () => {
     </section>
   );
 };
-
 export default AddJobPage;
